@@ -1,0 +1,186 @@
+@font-face {
+  font-family: "Inter";
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url(./fonts/Inter-Regular.woff2) format("woff2"),
+    url(./fonts/Inter-Regular.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url(./fonts/Inter-Medium.woff2) format("woff2"),
+    url(./fonts/Inter-Medium.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  src: url(./fonts/Inter-Black.woff2) format("woff2"),
+    url(./fonts/Inter-Black.woff) format("woff");
+}
+
+.pages {
+  background-color: #000000;
+  max-width: 100%;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+/* ---start header--- */
+
+.header {
+  display: flex;
+  max-width: 880px;
+  height: 74px;
+  flex-direction: column;
+  margin: 45px auto 0;
+  justify-content: space-between;
+}
+
+@media (max-width: 450px) {
+  .header {
+    margin: 28px auto 0;
+    height: 56px;
+  }
+}
+
+.header__logo {
+  background-image: url(./images/mesto_white.png);
+  width: 142px;
+  height: 33px;
+  background-size: cover;
+}
+
+@media (max-width: 908px) {
+  .header__logo {
+    margin: 0 27px 0;
+  }
+}
+
+@media (max-width: 450px) {
+  .header__logo {
+    width: 103.74px;
+    height: 24.4px;
+  }
+}
+
+.line {
+  background-image: url(./images/Line.png);
+  width: 100%;
+  height: 1px;
+}
+
+/* --- end header --- */
+
+.profile {
+  max-width: 880px;
+  margin: 40px auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 908px) {
+  .profile {
+    margin: 40px 19px 0;
+  }
+}
+
+@media (max-width: 672px) {
+  .profile {
+    justify-content: center;
+  }
+}
+
+.profile__wrap {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+@media (max-width: 525px) {
+  .profile {
+    flex-direction: column;
+    justify-content: center;
+  }
+  .profile__wrap {
+    flex-direction: column;
+  }
+  .profile-info__subtitle {
+    text-align: center;
+  }
+}
+
+.profile__avatar {
+  background-image: url(./images/kusto_foto.png);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-size: cover;
+  background-position: center;
+}
+.profile__profile-info {
+  max-width: 336px;
+  color: #ffffff;
+}
+
+.info__wrap {
+  display: flex;
+  gap: 18px;
+}
+
+.profile-info__title {
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 1.14;
+  margin: 0;
+}
+.profile-info__subtitle {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  margin: 16px 0 0;
+}
+.profile__eddit-button {
+  background-image: url(./images/Edit.svg);
+  width: 24px;
+  height: 24px;
+  background-color: #000000;
+  background-position: center;
+  background-size: cover;
+  margin-top: 15px;
+  border: 1px solid #ffffff;
+  cursor: pointer;
+}
+.profile__add-button {
+  background-image: url(./images/Add_Button.svg);
+  width: 150px;
+  height: 50px;
+  background-color: #000;
+  background-position: center;
+  background-size: cover;
+  border: 2px solid #ffffff;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.profile__eddit-button:hover {
+  opacity: 0.6;
+}
+
+.profile__add-button:hover {
+  opacity: 0.6;
+}
