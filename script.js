@@ -5,3 +5,4 @@ let infoTitle = document.querySelector('.profile-info__title');
 
 
 infoTitle.textContent = "Жуковский А.М";
+
