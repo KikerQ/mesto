@@ -1,4 +1,4 @@
-.profile__eddit-button {
+.profile-info__eddit-button {
   background-image: url(../../../../images/Edit.svg);
   width: 24px;
   height: 24px;
@@ -10,12 +10,12 @@
   cursor: pointer;
 }
 
-.profile__eddit-button:hover {
+.profile-info__eddit-button:hover {
   opacity: 0.6;
 }
 
 @media (max-width: 425px) {
-  .profile__eddit-button {
+  .profile-info__eddit-button {
     margin-top: 0;
   }
 }

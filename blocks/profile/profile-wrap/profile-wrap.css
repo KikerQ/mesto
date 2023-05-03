@@ -1,11 +1,11 @@
-.profile__wrap {
+.profile-wrap {
   display: flex;
   align-items: center;
   gap: 30px;
 }
 
 @media (max-width: 525px) {
-  .profile__wrap {
+  .profile-wrap {
     flex-direction: column;
     gap: 22.25px;
   }

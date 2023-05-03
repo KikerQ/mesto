@@ -1,5 +1,5 @@
 //поиск классов
-const edditButton = document.querySelector('.profile__eddit-button'); //кнопка редактирования фио и проф
+const edditButton = document.querySelector('.profile-info__eddit-button'); //кнопка редактирования фио и проф
 const popup = document.querySelector('.popup');
 const iconClouse = document.querySelector('.icon-clouse'); //элемент крестик
 const textName = document.querySelector('.profile-info__title'); // Вывод фио на странице
