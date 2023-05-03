@@ -1,0 +1,13 @@
+.element__button {
+  background-image: url(../../../images/Like.png);
+  background-size: cover;
+  width: 22px;
+  height: 19px;
+  border: 0px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.element__button:hover {
+  opacity: 0.5;
+}

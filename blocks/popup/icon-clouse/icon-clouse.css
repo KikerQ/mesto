@@ -1,0 +1,22 @@
+.icon-clouse {
+  background-image: url(../../../images/Close_Icon.svg);
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: -36px;
+  left: 431px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+@media (max-width: 540px) {
+  .icon-clouse {
+    width: 20px;
+    height: 20px;
+    top: -33px;
+    left: 265px;
+    background-size: cover;
+  }
+}
