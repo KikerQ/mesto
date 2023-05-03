@@ -20,3 +20,8 @@
     background-size: cover;
   }
 }
+
+.icon-clouse:hover {
+  opacity: 0.6;
+  transition: 0.3s;
+}
