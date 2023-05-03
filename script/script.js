@@ -10,14 +10,14 @@ const jobInput = document.querySelector('.popup__input_prof'); // Инпут п�
 
 //функция открытия
 function onPopup () {
-    popup.classList.remove('popup__activ');
+    popup.classList.remove('popup_activ');
     nameInput.value = textName.textContent; //заполняем инпут
     jobInput.value = textProf.textContent;
 }
 
 //функция закрытия
 function clousePopup () {
-    popup.classList.add('popup__activ');
+    popup.classList.add('popup_activ');
 }
 
 iconClouse.addEventListener('click', clousePopup);//закрыть
