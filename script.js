@@ -33,15 +33,6 @@ function formSubmitHandler (evt) {
 	evt.preventDefault(); // Эта строчка отменяет стандартную отправку формы.
 												// Так мы можем определить свою логику отправки.
 												// О том, как это делать, расскажем позже.
-
-	// Находим поля формы в DOM
-	
-	// Получите значение полей из свойства value
-
-	// Выберите элементы, куда должны быть вставлены значения полей
-
-	// Вставьте новые значения с помощью textContent
-
     textName.textContent = nameInput.value;
     textProf.textContent = jobInput.value;
     clousePopup();
