@@ -1,11 +1,11 @@
-.info-wrap {
+.profile__wrap {
   max-width: 336px;
   display: flex;
   gap: 18px;
 }
 
 @media (max-width: 425px) {
-  .info-wrap {
+  .profile__wrap {
     align-items: center;
   }
 }

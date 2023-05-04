@@ -1,7 +1,7 @@
 .header {
   display: flex;
   max-width: 880px;
-  height: 74px;
+  border-bottom: 1px solid rgb(84, 84, 84, 0.7);
   flex-direction: column;
   margin: 45px auto 0;
   justify-content: space-between;
@@ -10,6 +10,5 @@
 @media (max-width: 450px) {
   .header {
     margin: 28px auto 0;
-    height: 56px;
   }
 }

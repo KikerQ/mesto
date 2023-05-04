@@ -13,82 +13,82 @@
     <div class="container">
         <header class="header">
             <div class="header__logo"></div>
-            <div class="line"></div>
         </header>
-        <section class="profile">
-            <div class="profile-wrap">
-                <div class="profile__avatar"></div>
-                <div class="profile-info">
-                    <div class="info-wrap">
-                        <h1 class="profile-info__title">Жак-Ив Кусто</h1>
-                        <button class="profile-info__eddit-button"></button>
+        <main class="content">
+            <section class="profile">
+                <div class="profile__group">
+                    <img src="./images/kusto_foto.png" alt="аватарка" class="profile__avatar">
+                    <div class="profile__info">
+                        <div class="profile__wrap">
+                            <h1 class="profile__title">Жак-Ив Кусто</h1>
+                            <button class="profile__eddit-button"></button>
+                        </div>
+                        <p class="profile__subtitle">Исследователь океана</p>
                     </div>
-                    <p class="profile-info__subtitle">Исследователь океана</p>
                 </div>
-            </div>
-            <button class="profile__add-button"></button>
-        </section>
-        <section class="elements">
-            <div class="element">
-                <img src="./images/nsk.jpg" alt="фото" class="element__image">
-                <div class="element-conteiner">
-                    <h2 class="element__title">Новосибирский мост на Бугринке</h2>
-                    <button class="element__button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/elbrus.jpg" alt="фото" class="element__image">
-                <div class="element-conteiner">
-                    <h2 class="element__title">Гора Эльбрус</h2>
-                    <button class="element__button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/city.jpg" alt="фото" class="element__image">
-                <div class="element-conteiner">
-                    <h2 class="element__title">Карачаевск Карачаевск Карачаевск</h2>
-                    <button class="element__button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/dombay.jpg" alt="фото" class="element__image">
-                <div class="element-conteiner">
-                    <h2 class="element__title">Домбай</h2>
-                    <button class="element__button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/phi-phi.jpg" alt="фото" class="element__image">
-                <div class="element-conteiner">
-                    <h1 class="element__title">Пхи-Пхи Остров в Тае</h2>
+                <button class="profile__add-button"></button>
+            </section>
+            <ul class="elements">
+                <li class="element">
+                    <img src="./images/nsk.jpg" alt="фото" class="element__image">
+                    <div class="element__info">
+                        <h2 class="element__title">Новосибирский мост на Бугринке</h2>
                         <button class="element__button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/karachaev.jpg" alt="фото" class="element__image">
-                <div class="element-conteiner">
-                    <h2 class="element__title">Карачаевск</h2>
-                    <button class="element__button"></button>
-                </div>
-            </div>
-        </section>
+                    </div>
+                </li>
+                <li class="element">
+                    <img src="./images/elbrus.jpg" alt="фото" class="element__image">
+                    <div class="element__info">
+                        <h2 class="element__title">Гора Эльбрус</h2>
+                        <button class="element__button"></button>
+                    </div>
+                </li>
+                <li class="element">
+                    <img src="./images/city.jpg" alt="фото" class="element__image">
+                    <div class="element__info">
+                        <h2 class="element__title">Карачаевск Карачаевск Карачаевск</h2>
+                        <button class="element__button"></button>
+                    </div>
+                </li>
+                <li class="element">
+                    <img src="./images/dombay.jpg" alt="фото" class="element__image">
+                    <div class="element__info">
+                        <h2 class="element__title">Домбай</h2>
+                        <button class="element__button"></button>
+                    </div>
+                </li>
+                <li class="element">
+                    <img src="./images/phi-phi.jpg" alt="фото" class="element__image">
+                    <div class="element__info">
+                        <h1 class="element__title">Пхи-Пхи Остров в Тае</h2>
+                            <button class="element__button"></button>
+                    </div>
+                </li>
+                <li class="element">
+                    <img src="./images/karachaev.jpg" alt="фото" class="element__image">
+                    <div class="element__info">
+                        <h2 class="element__title">Карачаевск</h2>
+                        <button class="element__button"></button>
+                    </div>
+                </li>
+            </ul>
+        </main>
         <footer class="footer">
             <p class="footer__text">&copy; 2023 Mesto Russia</p>
         </footer>
 
 
-        <form class="popup popup_activ">
+        <div class="popup">
             <div class="popup__container">
-                <button class="icon-clouse"></button>
+                <button class="popup__btn-clouse"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
-                <div class="popup__grup">
-                    <input type="text" class="popup__input popup__input_name">
-                    <input type="text" class="popup__input popup__input_prof">
-
-                </div>
-                <button class="popup__batton">Сохранить</button>
+                <form class="popup__form">
+                    <input type="text" class="popup__input popup__form_input_name">
+                    <input type="text" class="popup__input popup__form_input_prof">
+                    <button class="popup__button">Сохранить</button>
+                </form>
             </div>
-        </form>
+        </div>
 
 
     </div>

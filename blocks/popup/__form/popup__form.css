@@ -1,8 +1,8 @@
-.popup__grup {
+.popup__form {
   display: grid;
   gap: 30px;
 }
 
-.popup__grup:last-child {
+.popup__form:last-child {
   margin-bottom: 0px;
 }

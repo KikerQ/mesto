@@ -1,4 +1,4 @@
-.icon-clouse {
+.popup__btn-clouse {
   background-image: url(../../../images/Close_Icon.svg);
   width: 32px;
   height: 32px;
@@ -12,7 +12,7 @@
 }
 
 @media (max-width: 540px) {
-  .icon-clouse {
+  .popup__btn-clouse {
     width: 20px;
     height: 20px;
     top: -33px;
@@ -21,7 +21,7 @@
   }
 }
 
-.icon-clouse:hover {
+.popup__btn-clouse:hover {
   opacity: 0.6;
   transition: 0.3s;
 }
