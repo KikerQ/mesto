@@ -4,8 +4,8 @@ const popup = document.querySelector('.popup');
 const iconClouse = document.querySelector('.popup__btn-clouse'); //элемент крестик
 const textName = document.querySelector('.profile__title'); // Вывод фио на странице
 const textProf = document.querySelector('.profile__subtitle'); // Вывод профессии на странице
-const nameInput = document.querySelector('.popup__form_input_name'); // Инпут фио
-const jobInput = document.querySelector('.popup__form_input_prof'); // Инпут проф
+const nameInput = document.querySelector('.popup__input_value_name'); // Инпут фио
+const jobInput = document.querySelector('.popup__input_value_prof'); // Инпут проф
 // Находим форму в DOM
 let formElement = document.querySelector('.popup__form');
 
