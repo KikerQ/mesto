@@ -18,7 +18,7 @@
 @media (max-width: 672px) {
   .profile__add-button {
     background-image: url(../../../images/Add_Button425.svg);
-    margin: 16px 0 0;
+    margin: 36px 0 0;
     width: 282px;
   }
 }

@@ -1,5 +1,5 @@
 .profile__eddit-button {
-  background-image: url(../../../../images/Edit.svg);
+  background-image: url(../../../images/Edit.svg);
   width: 24px;
   height: 24px;
   background-color: transparent;
@@ -18,5 +18,7 @@
 @media (max-width: 425px) {
   .profile__eddit-button {
     margin-top: 0;
+    width: 18px;
+    height: 18px;
   }
 }

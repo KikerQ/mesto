@@ -6,6 +6,6 @@
 
 @media (max-width: 425px) {
   .profile__wrap {
-    align-items: center;
+    align-items: baseline;
   }
 }
