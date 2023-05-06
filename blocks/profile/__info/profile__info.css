@@ -2,3 +2,9 @@
   max-width: 336px;
   color: #ffffff;
 }
+
+@media (max-width: 425px) {
+  .profile__info {
+    max-width: 282px;
+  }
+}

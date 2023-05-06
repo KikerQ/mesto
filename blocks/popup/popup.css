@@ -10,9 +10,3 @@
   top: 0;
   align-items: center;
 }
-
-@media (max-width: 540px) {
-  .popup {
-    padding-top: 123px;
-  }
-}
