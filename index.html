@@ -21,58 +21,25 @@
                     <div class="profile__info">
                         <div class="profile__wrap">
                             <h1 class="profile__title">Жак-Ив Кусто</h1>
-                            <button class="profile__eddit-button" type="button"></button>
+                            <button class="profile__eddit-button popup_open_eddit" type="button"></button>
                         </div>
                         <p class="profile__subtitle">Исследователь океана</p>
                     </div>
                 </div>
-                <button class="profile__add-button" type="button"></button>
+                <button class="profile__add-button popup_open_add" type="button"></button>
             </section>
-            <section class="elements">
-                <ul class="elements__list">
+            <section class="elements" aria-label="карточки">
+                <ul class="elements__list"></ul>
+                <template id="element_template">
                     <li class="element">
-                        <img src="./images/nsk.jpg" alt="фото" class="element__image">
+                        <button class="element__trash" type="button"></button>
+                        <img src="" alt="" class="element__image popup_open_image">
                         <div class="element__info">
-                            <h2 class="element__title">Новосибирский мост на Бугринке</h2>
-                            <button class="element__button" type="button"></button>
+                            <h2 class="element__title"></h2>
+                            <button class="element__button" type="reset"></button>
                         </div>
                     </li>
-                    <li class="element">
-                        <img src="./images/elbrus.jpg" alt="фото" class="element__image">
-                        <div class="element__info">
-                            <h2 class="element__title">Гора Эльбрус</h2>
-                            <button class="element__button" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="element">
-                        <img src="./images/city.jpg" alt="фото" class="element__image">
-                        <div class="element__info">
-                            <h2 class="element__title">Карачаевск</h2>
-                            <button class="element__button" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="element">
-                        <img src="./images/dombay.jpg" alt="фото" class="element__image">
-                        <div class="element__info">
-                            <h2 class="element__title">Домбай</h2>
-                            <button class="element__button" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="element">
-                        <img src="./images/phi-phi.jpg" alt="фото" class="element__image">
-                        <div class="element__info">
-                            <h2 class="element__title">Пхи-Пхи Остров в Тае</h2>
-                            <button class="element__button" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="element">
-                        <img src="./images/karachaev.jpg" alt="фото" class="element__image">
-                        <div class="element__info">
-                            <h2 class="element__title">Карачаевск</h2>
-                            <button class="element__button" type="button"></button>
-                        </div>
-                    </li>
-                </ul>
+                </template>
             </section>
         </main>
         <footer class="footer">
@@ -80,19 +47,40 @@
         </footer>
 
 
-        <div class="popup">
+        <div class="popup popup_eddit_profile">
             <div class="popup__container">
                 <button class="popup__btn-clouse" type="button"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form class="popup__form" name="text">
-                    <input type="text" class="popup__input popup__input_value_name" name="name">
-                    <input type="text" class="popup__input popup__input_value_prof" name="proffesion">
+                    <input type="text" class="popup__input popup__input_value_name" name="name" placeholder="Имя">
+                    <input type="text" class="popup__input popup__input_value_prof" name="proffesion"
+                        placeholder="Профессия">
                     <button class="popup__button" type="submit">Сохранить</button>
                 </form>
             </div>
         </div>
 
+        <div class="popup popup_add_cards">
+            <div class="popup__container">
+                <button class="popup__btn-clouse" type="button"></button>
+                <h3 class="popup__title">Новое место</h3>
+                <form class="popup__form popup_card_form" name="text">
+                    <input type="text" class="popup__input popup__input_value_place" name="place"
+                        placeholder="Название">
+                    <input type="text" class="popup__input popup__input_value_link" name="link"
+                        placeholder="Ссылка на картинку">
+                    <button class="popup__button" type="submit">Создать</button>
+                </form>
+            </div>
+        </div>
 
+        <div class="popup popup_view_image">
+            <figure class="popup__figure">
+                <img src="#" alt="#" class="popup__image">
+                <figcaption class="popup__figcaption"></figcaption>
+                <button class="popup__btn-clouse popup_clouse_image" type="button"></button>
+            </figure>
+        </div>
     </div>
     <script src="./script/script.js"></script>
 </body>

@@ -1,7 +1,7 @@
 .elements__list {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(282px, min-content));
   gap: 20px 17px;
   list-style: none;
   padding: 0;
@@ -9,7 +9,7 @@
 
 @media (max-width: 879px) {
   .elements__list {
-    grid-template-columns: repeat(auto-fit, minmax(282px, 315px));
+    grid-template-columns: repeat(auto-fit, minmax(282px, min-content));
     justify-items: center;
     justify-content: center;
   }
