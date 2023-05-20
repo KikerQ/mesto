@@ -1,11 +1,11 @@
-.popup_clouse_image {
+.popup_place_btn {
   right: -40px;
   top: -40px;
   left: unset;
 }
 
 @media (max-width: 425px) {
-  .popup_clouse_image {
+  .popup_place_btn {
     right: 0;
   }
 }

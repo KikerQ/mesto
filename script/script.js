@@ -1,7 +1,7 @@
 //поиск классов
-const openPopupEddit = document.querySelector('.popup_open_eddit'); //кнопка редактирования фио и проф
-const openPopupAdd = document.querySelector('.popup_open_add');//кнопка добавления карточек
-const openPopupImage = document.querySelector('.popup_open_image');
+const openPopupEddit = document.querySelector('.profile__eddit-button'); //кнопка редактирования фио и проф
+const openPopupAdd = document.querySelector('.profile__add-button');//кнопка добавления карточек
+const openPopupImage = document.querySelector('.element__image');
 const clouseButtons = document.querySelectorAll('.popup__btn-clouse'); //элемент крестик
 const popupEditProf = document.querySelector('.popup_eddit_profile');
 const popupAddCards = document.querySelector('.popup_add_cards');
@@ -48,19 +48,11 @@ const initialCards = [
 //открывания попапов
 const togglePopupState = (popupToToggle) => popupToToggle.classList.toggle('popup_active');
 
-//закрытие попап по крестику
-clouseButtons.forEach(function(e) {
-    e.addEventListener('click', () => {
-        const item = e.closest('.popup');
-        item.classList.remove('popup_active');
-    });
-});
-
 //функция добавления инф в инпуты
 function addInputInfo() {
     nameInput.value = textName.textContent; //заполняем инпут
     jobInput.value = textProf.textContent; //заполняем инпут
-}
+};
 
 // Обработчик «отправки» формы профиля
 function formSubmitHandlerProf(evt) {
@@ -74,13 +66,7 @@ function formSubmitHandlerProf(evt) {
       alert('Пожалуйста, заполните все поля ввода');
       return;   
     }
-}
-//открыть для ред профиля
-openPopupEddit.addEventListener('click', () => { 
-    togglePopupState(popupEditProf);
-     addInputInfo();
-});
-
+};
 
 //Добавление карточек из массива
 initialCards.forEach( card => {
@@ -89,7 +75,7 @@ initialCards.forEach( card => {
   const cardLink = element.querySelector('.element__image');
   let delButton = element.querySelectorAll('.element__trash');
   const likeButton = element.querySelector('.element__button');
-  const openPopupImage = element.querySelector('.popup_open_image');
+  const openPopupImage = element.querySelector('.element__image');
   cardName.textContent = card.name;
   cardLink.src = card.link;
   cardLink.alt = card.name;
@@ -129,7 +115,7 @@ function formSubmitHandlerCard(evt) {
     const cardName = newCard.querySelector('.element__title');
     const cardLink = newCard.querySelector('.element__image');
     const likeButton = newCard.querySelector('.element__button');
-    const openPopupImage = newCard.querySelector('.popup_open_image');
+    const openPopupImage = newCard.querySelector('.element__image');
     cardName.textContent = elemName;
     cardLink.src = elemLink;
     cardLink.alt = elemName;
@@ -161,21 +147,30 @@ function formSubmitHandlerCard(evt) {
     item.remove();
     });
   });
-}
+};
 
 //Чистим поля ввода
 function clearInput () {
   placeInput.value = '';
   linkInput.value = '';
-}
-
+};
 
 openPopupAdd.addEventListener('click', () => { togglePopupState(popupAddCards), clearInput()}); //открыть попап для добавления карточек
 formElement.addEventListener('submit', formSubmitHandlerProf);//Обработчик формы профиля
 formElementCard.addEventListener('submit', formSubmitHandlerCard);//Обработчик формы карточек
+//закрытие попап по крестику
+clouseButtons.forEach(function(e) {
+  e.addEventListener('click', () => {
+      const item = e.closest('.popup');
+      item.classList.remove('popup_active');
+  });
+});
 
-
-
+//открыть для ред профиля
+openPopupEddit.addEventListener('click', () => { 
+  togglePopupState(popupEditProf);
+   addInputInfo();
+});
 
 
 
