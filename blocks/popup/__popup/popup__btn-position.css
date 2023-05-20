@@ -1,11 +1,11 @@
-.popup_position_btn {
+.popup__btn-position {
   right: -40px;
   top: -40px;
   left: unset;
 }
 
 @media (max-width: 425px) {
-  .popup_position_btn {
+  .popup__btn-position {
     right: 0;
   }
 }
