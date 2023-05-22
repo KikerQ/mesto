@@ -12,3 +12,10 @@
   opacity: 0.5;
   transition: 0.3s;
 }
+
+@media (max-width: 425px) {
+  .element__button:hover {
+    opacity: 1;
+    transition: none;
+  }
+}

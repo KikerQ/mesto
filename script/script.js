@@ -1,6 +1,6 @@
 //поиск классов
-const openPopupEddit = document.querySelector('.profile__eddit-button'); //кнопка редактирования фио и проф
-const openPopupAdd = document.querySelector('.profile__add-button');//кнопка добавления карточек
+const edditButtonPopup = document.querySelector('.profile__eddit-button'); //кнопка редактирования фио и проф
+const addButtonPopup = document.querySelector('.profile__add-button');//кнопка добавления карточек
 const openPopupImage = document.querySelector('.element__image');
 const clouseButtons = document.querySelectorAll('.popup__btn-clouse'); //элемент крестик
 const popupEditProf = document.querySelector('.popup_eddit_profile');
@@ -48,21 +48,15 @@ function delCardElementTempalte(itemToDel) {
   itemToDel.remove();
 }
 
-//вставка карточки на станицу
-function renderCard(card, conteiner) {
-  conteiner.prepend(card);
-};
-
 //переключатель лайков
 function toggleLike(nameBtn) {
   nameBtn.classList.toggle('button_like_active')
 };
 
-//Добавление карточек из массива
-initialCards.forEach( card => {
-  const elementTemplate = templateItem.content.cloneNode(true);
-  const element = elementTemplate.querySelector('.element');
-  const cardName = elementTemplate.querySelector('.element__title');
+//создание карточки
+function createCard(card) {
+  const elementTemplate = templateItem.content.querySelector('.element').cloneNode(true);
+  const cardName = elementTemplate.querySelector('.element__title')
   const cardLink = elementTemplate.querySelector('.element__image');
   const delButton = elementTemplate.querySelector('.element__trash');
   const likeButton = elementTemplate.querySelector('.element__button');
@@ -70,59 +64,41 @@ initialCards.forEach( card => {
   cardName.textContent = card.name;
   cardLink.src = card.link;
   cardLink.alt = card.name;
-
-  likeButton.addEventListener('click', () => toggleLike(likeButton))//ставим лайки 
   
-  //Открываем попап с картинкой
+  //ставим лайки
+  likeButton.addEventListener('click', () => toggleLike(likeButton)) 
+
+   //Удаление карточек
+   delButton.addEventListener('click', () => delCardElementTempalte(elementTemplate));
+
+   //Открываем попап с картинкой
   openPopupImage.addEventListener('click', () => {
     openPopup(popupViewImage);
     photoPopupViewImage.src = cardLink.src;
     subtitlePopupFigcaption.innerText = card.name;
   });
 
-  renderCard(elementTemplate,listCard);
-  
-  //Удаление карточек
-  delButton.addEventListener('click', () => delCardElementTempalte(element));
+  return elementTemplate
+}
 
-});
- 
+//вставка карточки на страницу (универсальная функция)
+function renderCard(card, conteiner) {
+  conteiner.prepend(createCard(card));
+}; 
+
+//Добавление карточек из массива
+initialCards.forEach(item => {renderCard(item, listCard)});
+
 //Добавление новой карточки пользователем
 function handlerAddCard(evt) {
   resetDefault(evt)
-  //Инфа с инпута
-  const elemName = inputNamePlaceFormAddNewCard .value;
-  const elemLink = inputLinkFormAddNewCard .value;
-  
-  //Создаем новую карточку
-  const newCard = templateItem.content.cloneNode(true);
-  const element = newCard.querySelector('.element');
-  const cardName = newCard.querySelector('.element__title');
-  const cardLink = newCard.querySelector('.element__image');
-  const delButton = newCard.querySelector('.element__trash');
-  const likeButton = newCard.querySelector('.element__button');
-  const openPopupImage = newCard.querySelector('.element__image');
-  cardName.textContent = elemName;
-  cardLink.src = elemLink;
-  cardLink.alt = elemName;
-      
-  //переключатель лайков
-  likeButton.addEventListener('click', () => toggleLike(likeButton))
-      
-  //Открываем попап с картинкой
-  openPopupImage.addEventListener('click', () => {
-    openPopup(popupViewImage);
-    photoPopupViewImage.src = cardLink.src;
-    subtitlePopupFigcaption.innerText = elemName;
-    photoPopupViewImage.alt = elemName;
-  });
-
-  //добавление карточки и закрытие
-  renderCard(newCard, listCard);
-  clousePopup(popupAddCards);
-    
-  //Удаляем добавленные карточки
-  delButton.addEventListener('click', () => delCardElementTempalte(element)); 
+  //собираем объект data
+  const data = {
+    name: inputNamePlaceFormAddNewCard .value,
+    link: inputLinkFormAddNewCard .value
+  }
+renderCard(data, listCard);
+clousePopup(popupAddCards); 
 };
 
 //закрытие попап по крестику
@@ -134,16 +110,16 @@ clouseButtons.forEach(function(e) {
 });
 
 //открыть попап для добавления карточек
-openPopupAdd.addEventListener('click', () => {
+addButtonPopup.addEventListener('click', () => {
    openPopup(popupAddCards);
-   document.querySelector('.popup__form-card').reset();//очистка форм
+   formElementCard.reset();//очистка форм
 }); 
 
 formElementProfile.addEventListener('submit', submitFormHandlerProf);//Обработчик формы профиля
 formElementCard.addEventListener('submit', handlerAddCard);//Обработчик формы карточек
 
 //открыть для ред профиля
-openPopupEddit.addEventListener('click', () => { 
+edditButtonPopup.addEventListener('click', () => { 
   openPopup(popupEditProf);
    addInfoIntputProfile();
 });
