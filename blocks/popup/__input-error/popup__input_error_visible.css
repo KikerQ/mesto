@@ -1,4 +1,4 @@
-.popup__input-error_visible {
+.popup__input_error_visible {
   height: 15px;
   margin: 5px 0 13px;
   font-weight: 400;
@@ -8,6 +8,6 @@
   opacity: 0;
 }
 
-.popup__input-error_visible:nth-last-child(2) {
+.popup__input_error_visible:nth-last-child(2) {
   margin: 5px 0 0;
 }
