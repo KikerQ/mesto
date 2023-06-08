@@ -26,7 +26,7 @@ function closePopupOnEscape() {
     if (evt.key === "Escape") {
       const popupActive = document.querySelector(".popup_active");
       if (popupActive) {
-        popupActive.classList.remove("popup_active");
+        clousePopup(popupActive);
       }
     }
   }
@@ -41,7 +41,7 @@ function closePopupOnClick() {
   function handlerClick(evt) {
     const target = evt.target;
     if (target.classList.contains("popup_active")) {
-      target.classList.remove("popup_active");
+      clousePopup(target);
     }
   }
   document.addEventListener("click", handlerClick);
@@ -90,13 +90,12 @@ function createCard(card) {
     .querySelector(".element")
     .cloneNode(true);
   const cardName = elementTemplate.querySelector(".element__title");
-  const cardLink = elementTemplate.querySelector(".element__image");
+  const cardImage = elementTemplate.querySelector(".element__image");
   const delButton = elementTemplate.querySelector(".element__trash");
   const likeButton = elementTemplate.querySelector(".element__button");
-  const openPopupImage = elementTemplate.querySelector(".element__image");
   cardName.textContent = card.name;
-  cardLink.src = card.link;
-  cardLink.alt = card.name;
+  cardImage.src = card.link;
+  cardImage.alt = card.name;
 
   //ставим лайки
   likeButton.addEventListener("click", () => toggleLike(likeButton));
@@ -107,9 +106,9 @@ function createCard(card) {
   );
 
   //Открываем попап с картинкой
-  openPopupImage.addEventListener("click", () => {
+  cardImage.addEventListener("click", () => {
     openPopup(popupViewImage);
-    photoPopupViewImage.src = cardLink.src;
+    photoPopupViewImage.src = cardImage.src;
     subtitlePopupFigcaption.innerText = card.name;
     photoPopupViewImage.alt = card.name;
   });
@@ -139,26 +138,14 @@ function handlerAddCard(evt) {
   clousePopup(popupAddCards);
 }
 
-//функция очистки исп при открытии попа
+//функция очистки спанов при открытии попа
 const resetFormState = (form) => {
   const inputs = Array.from(
     form.querySelectorAll(validationConfig.inputSelector)
   );
 
-  const errorElements = Array.from(
-    form.querySelectorAll(`.${validationConfig.errorClass}`)
-  );
-  const submitButton = form.querySelector(
-    validationConfig.submitButtonSelector
-  );
-
   inputs.forEach((input) => {
-    input.classList.remove(validationConfig.inputErrorClass);
-  });
-
-  errorElements.forEach((errorElement) => {
-    errorElement.classList.remove(validationConfig.errorClass);
-    errorElement.textContent = "";
+    hideError(form, input, validationConfig);
   });
 };
 
@@ -175,7 +162,7 @@ addButtonPopup.addEventListener("click", () => {
   openPopup(popupAddCards);
   formElementCard.reset(); //очистка форм
   resetFormState(formElementCard);
-  toggleSubmitButtonState(formElementCard);
+  enableValidation(validationConfig);
 });
 
 formElementProfile.addEventListener("submit", submitFormHandlerProf); //Обработчик формы профиля
@@ -185,7 +172,6 @@ formElementCard.addEventListener("submit", handlerAddCard); //Обработчи
 edditButtonPopup.addEventListener("click", () => {
   openPopup(popupEditProf);
   addInfoIntputProfile();
-  //enableValidation(validationConfig);
   resetFormState(formElementProfile);
-  toggleSubmitButtonState(formElementProfile);
+  enableValidation(validationConfig);
 });
