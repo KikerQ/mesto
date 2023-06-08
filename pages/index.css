@@ -33,12 +33,12 @@
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__input/popup__input.css);
 @import url(../blocks/popup/__button/popup__button.css);
-@import url(../blocks/popup/__popup/popup_view_image.css);
+@import url(../blocks/popup/_view/popup_view_image.css);
 @import url(../blocks/popup/__figure/popup__figure.css);
 @import url(../blocks/popup/__image/popup__image.css);
-@import url(../blocks/popup/__popup/popup__btn-position.css);
+@import url(../blocks/popup/__btn-clouse/_position/popup__btn-position.css);
 @import url(../blocks/popup/__figcaption/popup__figcaption.css);
-@import url(../blocks/popup/__popup/popup__button_disabled.css);
-@import url(../blocks/popup/__input-error/popup__input_error_visible);
+@import url(../blocks/popup/__button/_disabled/popup__button_disabled.css);
+@import url(../blocks/popup/__error-text/popup__error-text.css);
 @import url(../blocks/popup/__input-error/popup__input_type_error.css);
 @import url(../blocks/popup/__input-error/popup__error_visible.css);
