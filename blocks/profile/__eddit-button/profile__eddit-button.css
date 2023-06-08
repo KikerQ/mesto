@@ -9,6 +9,7 @@
   border: 1px solid #ffffff;
   cursor: pointer;
   padding: 0;
+  outline: none;
 }
 
 .profile__eddit-button:hover {

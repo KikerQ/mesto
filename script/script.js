@@ -8,22 +8,46 @@ const popupAddCards = document.querySelector(".popup_add_cards");
 const popupViewImage = document.querySelector(".popup_view_image");
 const nameProfile = document.querySelector(".profile__title"); //вывод фио на странице
 const textProf = document.querySelector(".profile__subtitle"); //вывод профессии на странице
-const inputNameFormProfile = document.querySelector(".popup__input_value_name"); // Инпут фио
-const inputProfessionFormProfile = document.querySelector(
-  ".popup__input_value_prof"
-); // Инпут проф
-const inputNamePlaceFormAddNewCard = document.querySelector(
-  ".popup__input_value_place"
-); // Инпут названия места
-const inputLinkFormAddNewCard = document.querySelector(
-  ".popup__input_value_link"
-); // Инпут ссылка на картинку
-const formElementCard = document.querySelector(".popup__form-card");
-const formElementProfile = document.querySelector(".popup__form");
 const listCard = document.querySelector(".elements__list");
 const templateItem = document.querySelector("template");
 const photoPopupViewImage = document.querySelector(".popup__image");
 const subtitlePopupFigcaption = document.querySelector(".popup__figcaption");
+//формы
+const formElementProfile = document.forms.eddit_profile;
+const formElementCard = document.forms.add_cards;
+const inputNameFormProfile = formElementProfile.elements.name;
+const inputProfessionFormProfile = formElementProfile.elements.proffesion;
+const inputNamePlaceFormAddNewCard = formElementCard.elements.place;
+const inputLinkFormAddNewCard = formElementCard.elements.link;
+
+//закрытия попапа esc
+function closePopupOnEscape() {
+  function handlerKeyDown(evt) {
+    if (evt.key === "Escape") {
+      const popupActive = document.querySelector(".popup_active");
+      if (popupActive) {
+        popupActive.classList.remove("popup_active");
+      }
+    }
+  }
+
+  document.addEventListener("keydown", handlerKeyDown);
+}
+
+closePopupOnEscape();
+
+//закрытие попапа кликом
+function closePopupOnClick() {
+  function handlerClick(evt) {
+    const target = evt.target;
+    if (target.classList.contains("popup_active")) {
+      target.classList.remove("popup_active");
+    }
+  }
+  document.addEventListener("click", handlerClick);
+}
+
+closePopupOnClick();
 
 //открывания попапов
 const openPopup = (popupToOpen) => popupToOpen.classList.add("popup_active");
@@ -87,6 +111,7 @@ function createCard(card) {
     openPopup(popupViewImage);
     photoPopupViewImage.src = cardLink.src;
     subtitlePopupFigcaption.innerText = card.name;
+    photoPopupViewImage.alt = card.name;
   });
 
   return elementTemplate;
@@ -114,6 +139,29 @@ function handlerAddCard(evt) {
   clousePopup(popupAddCards);
 }
 
+//функция очистки исп при открытии попа
+const resetFormState = (form) => {
+  const inputs = Array.from(
+    form.querySelectorAll(validationConfig.inputSelector)
+  );
+
+  const errorElements = Array.from(
+    form.querySelectorAll(`.${validationConfig.errorClass}`)
+  );
+  const submitButton = form.querySelector(
+    validationConfig.submitButtonSelector
+  );
+
+  inputs.forEach((input) => {
+    input.classList.remove(validationConfig.inputErrorClass);
+  });
+
+  errorElements.forEach((errorElement) => {
+    errorElement.classList.remove(validationConfig.errorClass);
+    errorElement.textContent = "";
+  });
+};
+
 //закрытие попап по крестику
 clouseButtons.forEach(function (e) {
   e.addEventListener("click", () => {
@@ -126,6 +174,8 @@ clouseButtons.forEach(function (e) {
 addButtonPopup.addEventListener("click", () => {
   openPopup(popupAddCards);
   formElementCard.reset(); //очистка форм
+  resetFormState(formElementCard);
+  toggleSubmitButtonState(formElementCard);
 });
 
 formElementProfile.addEventListener("submit", submitFormHandlerProf); //Обработчик формы профиля
@@ -135,4 +185,7 @@ formElementCard.addEventListener("submit", handlerAddCard); //Обработчи
 edditButtonPopup.addEventListener("click", () => {
   openPopup(popupEditProf);
   addInfoIntputProfile();
+  //enableValidation(validationConfig);
+  resetFormState(formElementProfile);
+  toggleSubmitButtonState(formElementProfile);
 });
