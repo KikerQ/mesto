@@ -24,8 +24,10 @@ const hasInvalidInput = (inputs) => {
 //условия включения кнопки
 const toggleButtonState = (inputs, inputButton, config) => {
   if (hasInvalidInput(inputs)) {
+    inputButton.setAttribute("disabled", true);
     inputButton.classList.add("popup__button_disabled");
   } else {
+    inputButton.removeAttribute("disabled");
     inputButton.classList.remove("popup__button_disabled");
   }
 };
@@ -65,3 +67,11 @@ const enableValidation = (config) => {
 };
 
 enableValidation(validationConfig);
+
+//функция очистки спанов при открытии попа
+const resetFormState = (form, config) => {
+  const inputs = Array.from(form.querySelectorAll(config.inputSelector));
+  inputs.forEach((input) => {
+    hideError(form, input, config);
+  });
+};

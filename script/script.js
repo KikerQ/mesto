@@ -1,8 +1,9 @@
 //поиск классов
+const allPopup = document.querySelectorAll(".popup"); //массив попапов
 const edditButtonPopup = document.querySelector(".profile__eddit-button"); //кнопка редактирования фио и проф
 const addButtonPopup = document.querySelector(".profile__add-button"); //кнопка добавления карточек
 const openPopupImage = document.querySelector(".element__image");
-const clouseButtons = document.querySelectorAll(".popup__btn-clouse"); //элемент крестик
+const closeButtons = document.querySelectorAll(".popup__btn-close"); //элемент крестик
 const popupEditProf = document.querySelector(".popup_eddit_profile");
 const popupAddCards = document.querySelector(".popup_add_cards");
 const popupViewImage = document.querySelector(".popup_view_image");
@@ -21,39 +22,34 @@ const inputNamePlaceFormAddNewCard = formElementCard.elements.place;
 const inputLinkFormAddNewCard = formElementCard.elements.link;
 
 //закрытия попапа esc
+
 function closePopupOnEscape() {
   function handlerKeyDown(evt) {
     if (evt.key === "Escape") {
       const popupActive = document.querySelector(".popup_active");
       if (popupActive) {
-        clousePopup(popupActive);
+        closePopup(popupActive);
       }
     }
   }
-
   document.addEventListener("keydown", handlerKeyDown);
 }
-
 closePopupOnEscape();
 
 //закрытие попапа кликом
-function closePopupOnClick() {
-  function handlerClick(evt) {
-    const target = evt.target;
-    if (target.classList.contains("popup_active")) {
-      clousePopup(target);
+allPopup.forEach((itemPopup) => {
+  itemPopup.addEventListener("click", (evt) => {
+    if (evt.target == evt.currentTarget) {
+      closePopup(itemPopup);
     }
-  }
-  document.addEventListener("click", handlerClick);
-}
-
-closePopupOnClick();
+  });
+});
 
 //открывания попапов
 const openPopup = (popupToOpen) => popupToOpen.classList.add("popup_active");
 //закрывание попапов
-const clousePopup = (popupToClouse) =>
-  popupToClouse.classList.remove("popup_active");
+const closePopup = (popupToClose) =>
+  popupToClose.classList.remove("popup_active");
 
 //сброс дефолтов
 function resetDefault(evt) {
@@ -71,7 +67,7 @@ function submitFormHandlerProf(evt) {
   resetDefault(evt);
   nameProfile.textContent = inputNameFormProfile.value;
   textProf.textContent = inputProfessionFormProfile.value;
-  clousePopup(popupEditProf);
+  closePopup(popupEditProf);
 }
 
 //Удаление карточек
@@ -80,8 +76,8 @@ function delCardElementTempalte(itemToDel) {
 }
 
 //переключатель лайков
-function toggleLike(nameBtn) {
-  nameBtn.classList.toggle("button_like_active");
+function toggleLike(buttonLike) {
+  buttonLike.classList.toggle("button_like_active");
 }
 
 //создание карточки
@@ -117,8 +113,8 @@ function createCard(card) {
 }
 
 //вставка карточки на страницу (универсальная функция)
-function renderCard(card, conteiner) {
-  conteiner.prepend(createCard(card));
+function renderCard(card, container) {
+  container.prepend(createCard(card));
 }
 
 //Добавление карточек из массива
@@ -127,7 +123,7 @@ initialCards.forEach((item) => {
 });
 
 //Добавление новой карточки пользователем
-function handlerAddCard(evt) {
+function handleAddCard(evt) {
   resetDefault(evt);
   //собираем объект data
   const data = {
@@ -135,43 +131,36 @@ function handlerAddCard(evt) {
     link: inputLinkFormAddNewCard.value,
   };
   renderCard(data, listCard);
-  clousePopup(popupAddCards);
+  closePopup(popupAddCards);
 }
 
-//функция очистки спанов при открытии попа
-const resetFormState = (form) => {
-  const inputs = Array.from(
-    form.querySelectorAll(validationConfig.inputSelector)
-  );
-
-  inputs.forEach((input) => {
-    hideError(form, input, validationConfig);
-  });
-};
-
 //закрытие попап по крестику
-clouseButtons.forEach(function (e) {
-  e.addEventListener("click", () => {
-    const item = e.closest(".popup");
-    clousePopup(item);
+closeButtons.forEach(function (button) {
+  button.addEventListener("click", () => {
+    const item = button.closest(".popup");
+    closePopup(item);
   });
+});
+
+const buttonSubmitEdditProf = document.getElementById("btnEditProf");
+const buttonSubmitAddCard = document.getElementById("btnAddCard");
+//открыть для ред профиля
+edditButtonPopup.addEventListener("click", () => {
+  openPopup(popupEditProf);
+  addInfoIntputProfile();
+  resetFormState(formElementProfile, validationConfig);
+  buttonSubmitEdditProf.removeAttribute("disabled");
+  buttonSubmitEdditProf.classList.remove("popup__button_disabled");
 });
 
 //открыть попап для добавления карточек
 addButtonPopup.addEventListener("click", () => {
   openPopup(popupAddCards);
   formElementCard.reset(); //очистка форм
-  resetFormState(formElementCard);
-  enableValidation(validationConfig);
+  resetFormState(formElementCard, validationConfig);
+  buttonSubmitAddCard.setAttribute("disabled", true);
+  buttonSubmitAddCard.classList.add("popup__button_disabled");
 });
 
 formElementProfile.addEventListener("submit", submitFormHandlerProf); //Обработчик формы профиля
-formElementCard.addEventListener("submit", handlerAddCard); //Обработчик формы карточек
-
-//открыть для ред профиля
-edditButtonPopup.addEventListener("click", () => {
-  openPopup(popupEditProf);
-  addInfoIntputProfile();
-  resetFormState(formElementProfile);
-  enableValidation(validationConfig);
-});
+formElementCard.addEventListener("submit", handleAddCard); //Обработчик формы карточек
