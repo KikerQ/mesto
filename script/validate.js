@@ -66,6 +66,7 @@ const enableValidation = (config) => {
   });
 };
 
+//запустили функцию с настройками
 enableValidation(validationConfig);
 
 //функция очистки спанов при открытии попа
