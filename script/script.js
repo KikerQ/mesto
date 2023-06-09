@@ -13,6 +13,8 @@ const listCard = document.querySelector(".elements__list");
 const templateItem = document.querySelector("template");
 const photoPopupViewImage = document.querySelector(".popup__image");
 const subtitlePopupFigcaption = document.querySelector(".popup__figcaption");
+const buttonSubmitEdditProf = document.getElementById("buttonSubmitEditProf");
+const buttonSubmitAddCard = document.getElementById("buttonSubmitAddCard");
 //формы
 const formElementProfile = document.forms.eddit_profile;
 const formElementCard = document.forms.add_cards;
@@ -24,7 +26,7 @@ const inputLinkFormAddNewCard = formElementCard.elements.link;
 //закрытия попапа esc
 
 function closePopupOnEscape() {
-  function handlerKeyDown(evt) {
+  function handleKeyDown(evt) {
     if (evt.key === "Escape") {
       const popupActive = document.querySelector(".popup_active");
       if (popupActive) {
@@ -32,7 +34,7 @@ function closePopupOnEscape() {
       }
     }
   }
-  document.addEventListener("keydown", handlerKeyDown);
+  document.addEventListener("keydown", handleKeyDown);
 }
 closePopupOnEscape();
 
@@ -135,15 +137,13 @@ function handleAddCard(evt) {
 }
 
 //закрытие попап по крестику
-closeButtons.forEach(function (button) {
+closeButtons.forEach((button) => {
   button.addEventListener("click", () => {
     const item = button.closest(".popup");
     closePopup(item);
   });
 });
 
-const buttonSubmitEdditProf = document.getElementById("btnEditProf");
-const buttonSubmitAddCard = document.getElementById("btnAddCard");
 //открыть для ред профиля
 edditButtonPopup.addEventListener("click", () => {
   openPopup(popupEditProf);
