@@ -24,19 +24,14 @@ const inputNamePlaceFormAddNewCard = formElementCard.elements.place;
 const inputLinkFormAddNewCard = formElementCard.elements.link;
 
 //закрытия попапа esc
-
-function closePopupOnEscape() {
-  function handleKeyDown(evt) {
-    if (evt.key === "Escape") {
-      const popupActive = document.querySelector(".popup_active");
-      if (popupActive) {
-        closePopup(popupActive);
-      }
+function handleKeyDown(evt) {
+  if (evt.key === "Escape") {
+    const popupActive = document.querySelector(".popup_active");
+    if (popupActive) {
+      closePopup(popupActive);
     }
   }
-  document.addEventListener("keydown", handleKeyDown);
 }
-closePopupOnEscape();
 
 //закрытие попапа кликом
 allPopup.forEach((itemPopup) => {
@@ -48,10 +43,16 @@ allPopup.forEach((itemPopup) => {
 });
 
 //открывания попапов
-const openPopup = (popupToOpen) => popupToOpen.classList.add("popup_active");
+const openPopup = (popupToOpen) => {
+  popupToOpen.classList.add("popup_active");
+  document.addEventListener("keydown", handleKeyDown);
+};
+
 //закрывание попапов
-const closePopup = (popupToClose) =>
+const closePopup = (popupToClose) => {
   popupToClose.classList.remove("popup_active");
+  document.removeEventListener("keydown", handleKeyDown);
+};
 
 //сброс дефолтов
 function resetDefault(evt) {
