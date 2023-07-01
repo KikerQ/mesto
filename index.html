@@ -21,23 +21,29 @@
                     <div class="profile__info">
                         <div class="profile__wrap">
                             <h1 class="profile__title">Афанасий</h1>
-                            <button class="profile__eddit-button" type="button"></button>
+                            <button class="profile__eddit-button" type="button"
+                                aria-label="кнопка для открытия попапа профиля"></button>
                         </div>
                         <p class="profile__subtitle">Искусственные картинки</p>
                     </div>
                 </div>
-                <button class="profile__add-button" type="button"></button>
+                <button class="profile__add-button" type="button"
+                    aria-label="кнопка для открытия попапа карточки"></button>
             </section>
             <section class="elements" aria-label="карточки">
                 <ul class="elements__list"></ul>
                 <template class="element__template">
                     <li class="element">
-                        <button class="element__trash" type="button"></button>
-                        <img src="#" alt="#" class="element__image">
+                        <div class="element__wrap-block">
+                            <button class="element__trash" type="button"
+                                aria-label="кнопака удаления карточки"></button>
+                            <img src="#" alt="#" class="element__image">
+                        </div>
                         <div class="element__info">
                             <h2 class="element__title"></h2>
-                            <button class="element__button" type="reset"></button>
+                            <button class="element__button" type="reset" aria-label="Кнопка лайка"></button>
                         </div>
+
                     </li>
                 </template>
             </section>
@@ -49,7 +55,7 @@
 
         <div class="popup popup_eddit_profile">
             <div class="popup__container">
-                <button class="popup__btn-close" type="button"></button>
+                <button class="popup__btn-close" type="button" aria-label="Кнопка закрытия окна"></button>
                 <h3 class="popup__title">Редактировать профиль</h3>
                 <form class="popup__form" name="eddit_profile" novalidate>
                     <input id="text-name" type="text" class="popup__input popup__input_value_name" name="name"
@@ -58,14 +64,15 @@
                     <input id="text-proffesion" type="text" class="popup__input popup__input_value_prof"
                         name="proffesion" placeholder="Профессия" required minlength="2" maxlength="200">
                     <span class="text-proffesion-error popup__error-text"></span>
-                    <button id="buttonSubmitEditProfile" class="popup__button" type="submit">Сохранить</button>
+                    <button id="buttonSubmitEditProfile" class="popup__button" type="submit"
+                        aria-label="Кнопка сохранения информации">Сохранить</button>
                 </form>
             </div>
         </div>
 
         <div class="popup popup_add_cards">
             <div class="popup__container">
-                <button class="popup__btn-close" type="button"></button>
+                <button class="popup__btn-close" type="button" aria-label="Кнопка закрытия окна"></button>
                 <h3 class="popup__title">Новое место</h3>
                 <form class="popup__form popup__form-card" name="add_cards" novalidate>
                     <input id="text-place" type="text" class="popup__input popup__input_value_place" name="place"
@@ -74,22 +81,22 @@
                     <input id="url-link" type="url" class="popup__input popup__input_value_link" name="link"
                         placeholder="Ссылка на картинку" required>
                     <span class="url-link-error popup__error-text"></span>
-                    <button id="buttonSubmitAddCard" class="popup__button" type="submit">Создать</button>
+                    <button id="buttonSubmitAddCard" class="popup__button" type="submit"
+                        aria-label="Кнопка добавления новой карточки">Создать</button>
                 </form>
             </div>
         </div>
 
         <div class="popup popup_view_image">
             <figure class="popup__figure">
-                <button class="popup__btn-close popup__btn-position" type="button"></button>
+                <button class="popup__btn-close popup__btn-position aria-label=" Кнопка закрытия окна""
+                    type="button"></button>
                 <img src="#" alt="#" class="popup__image">
                 <figcaption class="popup__figcaption"></figcaption>
             </figure>
         </div>
 
     </div>
-    <script type="module" src="./script/Card.js"></script>
-    <script type="module" src="./script/FormValidator.js"></script>
     <script type="module" src="./script/index.js"></script>
 </body>
 
