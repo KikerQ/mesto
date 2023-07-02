@@ -3,9 +3,7 @@ import FormValidator from "./FormValidator.js";
 import { initialCards, validationConfig } from "./constants.js";
 
 const allPopup = document.querySelectorAll(".popup"); //массив попапов
-const btnShowProfileEditPopUp = document.querySelector(
-  ".profile__eddit-button"
-); //кнопка редактирования фио и проф
+const btnShowProfileEditPopUp = document.querySelector(".profile__eddit-button"); //кнопка редактирования фио и проф
 const btnShowCardAddPopUp = document.querySelector(".profile__add-button"); //кнопка добавления карточек
 const popupEditProfile = document.querySelector(".popup_eddit_profile");
 const popupAddCard = document.querySelector(".popup_add_cards");
@@ -53,21 +51,15 @@ addCardFormValidator.enableValidation();
 const addCardOnPage = (data) => {
   const card = new Card(data, ".element__template", handleOpenPopup);
   const cardEl = card.generateCard();
-  card.cardImage.addEventListener("click", () => { 
+  card._cardImage.addEventListener("click", () => { 
     openPopup(popupViewImage);
-    photoPopupViewImage.src = card.cardImage.src;
-    photoPopupViewImage.alt = card.cardImage.alt;
+    photoPopupViewImage.src = card._cardImage.src;
+    photoPopupViewImage.alt = card._cardImage.alt;
     popupViewImage.querySelector(".popup__figcaption").textContent =
-      card.cardImage.alt;
+      card._cardImage.alt;
   });
   cardContainer.prepend(cardEl);
 };
-
-/* const addCardOnPage = (data) => {
-  const card = new Card(data, ".element__template", handleOpenPopup);
-  const cardEl = card.generateCard();
-  cardContainer.prepend(cardEl);
-}; */
 
 const handleOpenPopup = (name, link) => {
   photoPopupViewImage.src = link;
