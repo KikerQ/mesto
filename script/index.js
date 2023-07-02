@@ -53,8 +53,21 @@ addCardFormValidator.enableValidation();
 const addCardOnPage = (data) => {
   const card = new Card(data, ".element__template", handleOpenPopup);
   const cardEl = card.generateCard();
+  card.cardImage.addEventListener("click", () => { 
+    openPopup(popupViewImage);
+    photoPopupViewImage.src = card.cardImage.src;
+    photoPopupViewImage.alt = card.cardImage.alt;
+    popupViewImage.querySelector(".popup__figcaption").textContent =
+      card.cardImage.alt;
+  });
   cardContainer.prepend(cardEl);
 };
+
+/* const addCardOnPage = (data) => {
+  const card = new Card(data, ".element__template", handleOpenPopup);
+  const cardEl = card.generateCard();
+  cardContainer.prepend(cardEl);
+}; */
 
 const handleOpenPopup = (name, link) => {
   photoPopupViewImage.src = link;
